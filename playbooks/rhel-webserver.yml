@@ -41,6 +41,7 @@
             <h1>Herzlich Willkommen!</h1>
             <p>Diese Webseite wurde vollautomatisch mit Ansible aufgesetzt.</p>
             <p>Mit einem Klick hat Ansible dafür gesorgt, dass Sie jetzt hier sind. Willkommen in der Welt der DevOps-Automatisierung!</p>
+            <p>Auch komplexe Day-2-Operations wie Konfigurationsänderungen, Updates oder Monitoring-Integrationen werden mit Ansible deutlich vereinfacht.</p>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/OpenShift-LogoType.svg" alt="Simply Easy Learning" width="800" height="400">
 
