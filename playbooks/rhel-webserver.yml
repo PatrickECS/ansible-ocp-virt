@@ -42,7 +42,7 @@
             <p>Diese Webseite wurde vollautomatisch mit Ansible aufgesetzt.</p>
             <p>Mit einem Klick hat Ansible dafür gesorgt, dass Sie jetzt hier sind. Willkommen in der Welt der DevOps-Automatisierung!</p>
 
-            <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgursimarsm.medium.com%2Fopenshift-case-study-7082865402d1&psig=AOvVaw2a69fQhDTw7DZ9odjg-mIf&ust=1754558706918000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMiuotju9Y4DFQAAAAAdAAAAABAE" alt="Simply Easy Learning" width="800" height="400">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/OpenShift-LogoType.svg" alt="Simply Easy Learning" width="800" height="400">
 
             <div class="footer">
               <p>Server administriert durch Ansible | Erstellt am {{ ansible_date_time.date }}</p>
