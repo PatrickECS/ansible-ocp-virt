@@ -48,18 +48,6 @@
           </html>
       notify: restart httpd
 
-    - name: Deploy OpenShift ConfigMap
-      k8s:
-        state: present
-        definition:
-          apiVersion: v1
-          kind: ConfigMap
-          metadata:
-            name: ansible-generated-config
-            namespace: default
-          data:
-            welcome: "Deployed via Ansible playbook using redhat.openshift.k8s"
-
   handlers:
     - name: restart httpd
       service:
