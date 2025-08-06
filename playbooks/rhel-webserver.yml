@@ -1,5 +1,5 @@
 - name: Apache Webserver configuration on OpenShift 
-  hosts: namespace_ansible-managed-vm
+  hosts: namespace_ansible_managed_vm
   become: true
   collections:
     - redhat.openshift.k8s
