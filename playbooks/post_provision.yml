@@ -1,13 +1,33 @@
-- hosts: namespace_ansible_managed_vm
-  become: true  # Run tasks with root privileges
+---
+- name: Install common packages and httpd on RHEL-based systems
+  hosts: namespace_ansible_managed_vm
+  become: true
+  gather_facts: true
+
   tasks:
+    - name: Ensure we are on a RedHat-based system
+      fail:
+        msg: "Dieses Playbook ist nur für RedHat-basierte Systeme vorgesehen."
+      when: ansible_os_family != 'RedHat'
+
+    - name: Install common packages
+      package:
+        name:
+          - curl
+          - htop
+          - tree
+          - podman
+          - vim
+          - git
+        state: present
+
     - name: Install httpd package
-      ansible.builtin.package:
+      package:
         name: httpd
         state: present
 
-    - name: Start httpd service
-      ansible.builtin.service:
+    - name: Start and enable httpd service
+      service:
         name: httpd
         state: started
-        enabled: yes  
+        enabled: yes
