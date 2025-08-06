@@ -7,7 +7,7 @@
         apiVersion: project.openshift.io/v1
         kind: Project
         metadata:
-          name: workloads
+          name: ansible-managed-vm
   - name: Create fedora virtual machine
     redhat.openshift_virtualization.kubevirt_vm:
       state: present
@@ -35,8 +35,8 @@
           - cloudInitNoCloud:
               userData: |-
                 #cloud-config
-                user: fedora
-                password: fedora
+                user: Fedora1
+                password: Fedora1
                 chpasswd:
                   expire: false
                 ssh_pwauth: true
