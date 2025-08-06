@@ -1,0 +1,67 @@
+---
+- name: Apache Webserver configuration on OpenShift 
+  hosts: namespace_workloads
+  become: true
+  collections:
+    - redhat.openshift.k8s
+
+  tasks:
+
+    - name: Update all packages (RHEL)
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure httpd is started and enabled
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Deploy index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+          <head>
+            <title>Automatisiert mit Ansible!</title>
+            <style>
+              body { font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333; text-align: center; margin-top: 50px; }
+              h1 { color: #336699; }
+              p { font-size: 1.1em; line-height: 1.6em; }
+              .footer { margin-top: 40px; font-size: 0.9em; color: #666; }
+            </style>
+          </head>
+          <body>
+            <h1>Herzlich Willkommen!</h1>
+            <p>Diese Webseite wurde vollautomatisch mit Ansible aufgesetzt.</p>
+            <p>Mit einem Klick hat Ansible dafuer gesorgt, dass Sie jetzt hier sind. Willkommen in der Welt der DevOps-Automatisierung!</p>
+            <div class="footer">
+              <p>Server administriert durch Ansible | Erstellt am {{ ansible_date_time.date }}</p>
+            </div>
+          </body>
+          </html>
+      notify: restart httpd
+
+    - name: Deploy OpenShift ConfigMap
+      k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: ConfigMap
+          metadata:
+            name: ansible-generated-config
+            namespace: default
+          data:
+            welcome: "Deployed via Ansible playbook using redhat.openshift.k8s"
+
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
