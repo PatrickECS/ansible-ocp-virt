@@ -12,7 +12,7 @@
     redhat.openshift_virtualization.kubevirt_vm:
       state: present
       name: fedora-httpd
-      namespace: workloads
+      namespace: ansible-managed-vm
       labels:
         app: httpd
       instancetype:
@@ -47,7 +47,7 @@
       api_version: kubevirt.io/v1
       kind: VirtualMachineInstance
       name: fedora-httpd
-      namespace: workloads
+      namespace: ansible-managed-vm
     register: vmi
     retries: 60
     delay: 10
