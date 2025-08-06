@@ -7,12 +7,12 @@
         apiVersion: project.openshift.io/v1
         kind: Project
         metadata:
-          name: workloads
+          name: "{{ project_name }}"
   - name: Create fedora virtual machine
     redhat.openshift_virtualization.kubevirt_vm:
       state: present
-      name: fedora-httpd
-      namespace: workloads
+      name: "{{ vm_name }}"
+      namespace: "{{ project_name }}"
       labels:
         app: httpd
       instancetype:
