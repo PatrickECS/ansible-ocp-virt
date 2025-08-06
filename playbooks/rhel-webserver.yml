@@ -44,6 +44,8 @@
             <div class="footer">
               <p>Server administriert durch Ansible | Erstellt am {{ ansible_date_time.date }}</p>
             </div>
+             <img src="https://i.ytimg.com/vi/345uHQVwWic/maxresdefault.jpg" alt="Simply Easy Learning" width="1500"
+                height="750">
           </body>
           </html>
       notify: restart httpd
